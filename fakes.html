@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavão hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav{
+            background-color: black;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin: auto; /* Centraliza horizontalmente */
+            position: relative; /* Define como relativo */
+            top: 20%; /* Move para baixo 50% da altura do viewport */
+            transform: translateY(-50%); /* Move para cima 50% da própria altura */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        #imageUploadSection {
+            margin-bottom: 20px;
+        }
+
+        #passwordSection {
+            margin-bottom: 20px;
+        }
+
+        #downloadButton {
+            margin-top: 20px;
+        }
+
+        .asdasd{
+            color: #f0f0f0;
+            font-size: 300%;
+        }
+
+        .asd{
+            display: flex;
+        }
+        .perm{
+            color: #cacaca;
+        }
+
+        .all{
+            display: flex;
+            background-color: black;
+        }
+        .dc{
+            border-radius: 2vh;
+        }
+        .delet{
+            color: red;
+        }
+
+        .links { display: none; }
+        .dominus, .valk, .fedora, .dominusExa { display: none; }
+        .pesquisa{
+            color: green;
+        }
+        .pesquisa:hover{
+            text-decoration: underline;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
+        <script>
+            function showLinks(category) {
+                document.querySelectorAll('.links').forEach(el => el.style.display = 'none');
+                document.querySelectorAll(`.${category}`).forEach(el => el.style.display = 'block');
+            }
+        </script>
+</head>
+<body>
+    <nav>
+    <div class="all">
+        <div class="asd">
+            <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+            <h1 class="asdasd">Pavão hub</h1>
+        </div> 
+        <div class="asd2">
+        <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+    </div>
+    </div>
+        <h3 class="perm">Permissão necessaria: Nenhuma</h3>
+    </nav>
+    <h1><b>Replicas de itens caros por um preço bem acessivel</b></h1>
+    <select onchange="showLinks(this.value)">
+        <option value="">Selecione uma categoria</option>
+        <option value="dominus">Dominus</option>
+        <option value="valk">Valk</option>
+        <option value="fedora">Fedora</option>
+        <option value="dominusExa">Dominus exagerada</option>
+    </select>
+    <br>
+    <div class="links dominusExa">
+        <a class="pesquisa" href="https://www.roblox.com/catalog/16573494434/Amethyst-Ethereal-Dominus">Dominus exagerada roxa</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17413973085/Dominus">Dominus exagerada dourada</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17298130910/Purple-Cosmic-Dominus">Dominus exagerada cosmica roxa</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/16573492133/Golden-Ethereal-Dominus">Dominus exagerada amarelo com preto</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/16573465731/Azure-Gilded-Ethereal-Dominus">Dominus exagerada azul com amarelo dourada</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/16348631727/Astra-Dominus-of-the-Fallen-Federation">Dominus exagerada preto com branco</a><br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div class="links dominus">
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17847502045/Dominus">Dominus dourada</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17420588941/Dominus">Dominus preta</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17784417832/Dominus">Dominus branca</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17551296972/Dominus">Dominus azul</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17165411525/Dominus">Dominus preta com decorações vermelhas</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/16275763027/Cartoony-Rainbow-Dominus">Dominus preta com arco iris</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div class="links valk">
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17634841367/Red-Valk">Valk vermelha</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17810600090/Valkyrie">Valk preta com amarelo</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17480059071/Valk">Valk roxa</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div class="links fedora">
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17812382189/NEW-Purple-Paper-Fedora-v2">Fedora roxa</a><br>
+        <a class="pesquisa" href="https://www.roblox.com/catalog/17254290078/Black-Sparkle-Fedora">Fedora preta</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <a href="https://www.roblox.com/catalog/16573494434/Amethyst-Ethereal-Dominus">Dominus exagerada roxa</a><br>
+    <a href="https://www.roblox.com/catalog/17413973085/Dominus">Dominus exagerada dourada</a><br>
+    <a href="https://www.roblox.com/catalog/17298130910/Purple-Cosmic-Dominus">Dominus exagerada cosmica roxa</a><br>
+    <a href="https://www.roblox.com/catalog/16573492133/Golden-Ethereal-Dominus">Dominus exagerada amarelo com preto</a><br>
+    <a href="https://www.roblox.com/catalog/16573465731/Azure-Gilded-Ethereal-Dominus">Dominus exagerada azul com amarelo dourada</a><br>
+    <a href="https://www.roblox.com/catalog/16348631727/Astra-Dominus-of-the-Fallen-Federation">Dominus exagerada preto com branco</a><br>
+    <a href="https://www.roblox.com/catalog/17847502045/Dominus">Dominus dourada</a><br>
+    <a href="https://www.roblox.com/catalog/17420588941/Dominus">Dominus preta</a><br>
+    <a href="https://www.roblox.com/catalog/17784417832/Dominus">Dominus branca</a><br>
+    <a href="https://www.roblox.com/catalog/17551296972/Dominus">Dominus azul</a><br>
+    <a href="https://www.roblox.com/catalog/17165411525/Dominus">Dominus preta com decorações vermelhas</a><br>
+    <a href="https://www.roblox.com/catalog/16275763027/Cartoony-Rainbow-Dominus">Dominus preta com arco iris</a><br>
+    <a href="https://www.roblox.com/catalog/17634841367/Red-Valk">Valk vermelha</a><br>
+    <a href="https://www.roblox.com/catalog/17810600090/Valkyrie">Valk preta com amarelo</a><br>
+    <a href="https://www.roblox.com/catalog/17480059071/Valk">Valk roxa</a><br>
+    <a href="https://www.roblox.com/catalog/17812382189/NEW-Purple-Paper-Fedora-v2">Fedora roxa</a><br>
+    <a href="https://www.roblox.com/catalog/17254290078/Black-Sparkle-Fedora">Fedora preta</a>
+    
+    
+    
+    
+    
+</body>
+</html>

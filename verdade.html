@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortear Nomes</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        textarea{
+            background-color: blueviolet;
+            color: aliceblue;
+            border: 1;
+            border-radius: 1vh;
+        }
+        #nomes {
+            resize: vertical;
+        }
+
+        .asdasd{
+            color: #f0f0f0;
+            font-size: 300%;
+        }
+
+        .asd{
+            display: flex;
+        }
+        .perm{
+            color: #cacaca;
+        }
+
+        .all{
+            display: flex;
+            background-color: black;
+        }
+        .dc{
+            border-radius: 2vh;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="all">
+            <div class="asd">
+                <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+                <h1 class="asdasd">Pavão hub</h1>
+            </div> 
+            <div class="asd2">
+            <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+        </div>
+        </div>
+            <h3 class="perm">Permissão necessaria: Nenhuma</h3>
+        </nav>
+    <h1>Sorteio de Nomes</h1>
+    <label for="nomes">Escreva os nomes separados por vírgula:</label>
+    <label for="nomes">Exemplo: Nome1, nome2, nome3, nome4, etc</label>
+    <textarea id="nomes" rows="4" cols="50"></textarea>
+    <br>
+    <button id="sortearBtn">Sortear Nome</button>
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('sortearBtn').addEventListener('click', function() {
+            // Obter os nomes do textarea e dividir em um array
+            const inputNomes = document.getElementById('nomes').value;
+            const nomes = inputNomes.split(',').map(nome => nome.trim()).filter(nome => nome !== "");
+
+            if (nomes.length === 0) {
+                alert("Por favor, insira pelo menos um nome.");
+                return;
+            }
+
+            // Sortear um nome aleatoriamente
+            const nomeSorteado = nomes[Math.floor(Math.random() * nomes.length)];
+
+            // Exibir o nome sorteado
+            document.getElementById('resultado').innerText = nomeSorteado;
+        });
+    </script>
+</body>
+</html>

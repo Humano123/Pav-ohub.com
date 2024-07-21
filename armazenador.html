@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavão hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin: auto; /* Centraliza horizontalmente */
+            position: relative; /* Define como relativo */
+            top: 20%; /* Move para baixo 50% da altura do viewport */
+            transform: translateY(-50%); /* Move para cima 50% da própria altura */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        #imageUploadSection {
+            margin-bottom: 20px;
+        }
+
+        #passwordSection {
+            margin-bottom: 20px;
+        }
+
+        #downloadButton {
+            margin-top: 20px;
+        }
+
+        .asdasd{
+            color: #f0f0f0;
+            font-size: 300%;
+        }
+
+        .asd{
+            display: flex;
+        }
+        .perm{
+            color: #cacaca;
+        }
+
+        .all{
+            display: flex;
+            background-color: black;
+        }
+        .dc{
+            border-radius: 2vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="asd">
+            <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+            <h1 class="asdasd">Pavão hub</h1>
+        </div> 
+        <div class="asd2">
+        <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+    </div>
+    </div>
+        <h3 class="perm">Permissão necessaria: Downloads</h3>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h1>Armazenador secreto🤫</h1>
+        <div id="imageUploadSection">
+            <label for="imageUpload">Carregar Imagem:</label>
+            <input type="file" id="imageUpload" accept="image/*">
+            <br>
+            <br>
+            <label for="imagePassword">Definir senha:</label>
+            <input type="password" id="imagePassword">
+            <button id="addImageButton">Adicionar Imagem</button>
+        </div>
+        <div id="passwordSection" class="hidden">
+            <label for="passwordInput">Digite a senha:</label>
+            <input type="password" id="passwordInput" required>
+            <button id="passwordSubmit">Acessar</button>
+        </div>
+        <br>
+        <div id="imageContainer" class="hidden">
+            <img id="displayedImage" ondragstart="return true">
+            <button id="downloadButton" class="hidden">Baixar Imagem</button>
+        </div>
+        <br>
+        <p>Esse tipo de armaneador não tem nenhum tipo de restrição, portanto, pode guardar QUALQUER tipo de foto, o site é totalmente seguro, suas informações não vão para terceiros, o navegador que você usa pode falar que não é seguro por downloads automatico que serve apenas para você abaixar a imagem. <strong>Este site não solicita permissão para usar a câmera, microfone ou qualquer outro dispositivo.</strong></p>
+    </div>
+    <script>
+        // Seleciona os elementos do DOM
+        const imageUploadInput = document.getElementById('imageUpload');
+        const imagePasswordInput = document.getElementById('imagePassword');
+        const addImageButton = document.getElementById('addImageButton');
+        const passwordSection = document.getElementById('passwordSection');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordSubmitButton = document.getElementById('passwordSubmit');
+        const imageContainer = document.getElementById('imageContainer');
+        const displayedImage = document.getElementById('displayedImage');
+        const downloadButton = document.getElementById('downloadButton');
+
+        // Função para inicializar as imagens salvas no localStorage ao carregar a página
+        function initializeSavedImages() {
+            const savedImages = JSON.parse(localStorage.getItem('savedImages')) || {};
+            if (Object.keys(savedImages).length > 0) {
+                passwordSection.classList.remove('hidden');
+            }
+        }
+
+        // Ouvinte de evento para carregar a imagem
+        addImageButton.addEventListener('click', function() {
+            const file = imageUploadInput.files[0];
+            const password = imagePasswordInput.value;
+
+            if (!file) {
+                alert('Por favor, selecione uma imagem.');
+                return;
+            }
+
+            if (password.trim() === '') {
+                alert('Por favor, defina uma senha para a imagem.');
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                // Salva a imagem e a senha no localStorage
+                const savedImages = JSON.parse(localStorage.getItem('savedImages')) || {};
+                savedImages[password] = event.target.result; // Substitui a imagem se a senha já existir
+                localStorage.setItem('savedImages', JSON.stringify(savedImages));
+
+                // Limpa os campos de entrada após adicionar a imagem
+                imageUploadInput.value = '';
+                imagePasswordInput.value = '';
+
+                // Mostra a seção de senha
+                passwordSection.classList.remove('hidden');
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        // Ouvinte de evento para verificar a senha
+        passwordSubmitButton.addEventListener('click', function() {
+            const password = passwordInput.value;
+
+            // Procura pela imagem correspondente à senha digitada
+            const savedImages = JSON.parse(localStorage.getItem('savedImages')) || {};
+            if (savedImages[password]) {
+                showImage(savedImages[password]); // Mostra a imagem correspondente
+            } else {
+                alert('Essa senha não existe, tente outra!');
+                passwordInput.value = '';
+            }
+        });
+
+        // Função para mostrar a imagem selecionada
+        function showImage(imageSrc) {
+            displayedImage.src = imageSrc;
+            imageContainer.classList.remove('hidden');
+            downloadButton.classList.remove('hidden'); // Mostra o botão de download
+
+            // Salva a imagem atual no sessionStorage para manter após o fechamento
+            sessionStorage.setItem('currentImage', imageSrc);
+
+            // Função para baixar a imagem
+            downloadButton.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.href = imageSrc;
+                link.download = 'image.png'; // Nome padrão do arquivo a ser baixado
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+
+        // Função para verificar se a página está sendo fechada ou recarregada
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.removeItem('currentImage'); // Remove a imagem ao sair da página
+        });
+
+        // Função para carregar a última imagem mostrada ao recarregar a página
+        function loadLastImage() {
+            const lastImage = sessionStorage.getItem('currentImage');
+            if (lastImage) {
+                showImage(lastImage);
+            }
+        }
+
+        // Inicializa as imagens salvas ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSavedImages();
+            loadLastImage(); // Carrega a última imagem mostrada
+        });
+    </script>
+</body>
+</html>

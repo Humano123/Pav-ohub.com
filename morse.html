@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto para Código Morse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .output-container, .translator-output-container, .translated-text-container {
+            position: relative;
+            margin-top: 20px;
+            height: 150px; /* Altura do contêiner, ajuste conforme necessário */
+            border: 2px solid #000;
+            padding: 10px;
+            overflow-y: auto; /* Adiciona rolagem vertical quando necessário */
+            white-space: pre-wrap; /* Preserva espaços e quebras de linha */
+            text-align: left; /* Alinha o texto à esquerda dentro do contêiner */
+        }
+
+        .output-container::after, .translator-output-container::after, .translated-text-container::after {
+            content: attr(data-description);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .asdasd {
+            color: #f0f0f0;
+            font-size: 300%;
+        }
+
+        .asd {
+            display: flex;
+        }
+        .perm {
+            color: #cacaca;
+        }
+
+        .all {
+            display: flex;
+            background-color: black;
+        }
+        .dc {
+            border-radius: 2vh;
+        }
+
+        /* Adicionando estilos para o novo tradutor */
+        .translator-container {
+            margin-top: 40px;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+        }
+        .translator-container input, .translator-container button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="asd">
+            <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+            <h1 class="asdasd">Pavão hub</h1>
+        </div> 
+        <div class="asd2">
+            <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+        </div>
+    </div>
+    <h3 class="perm">Permissão necessária: Nenhuma</h3>
+    <h3>Caso tenha algum caractere especial, colocaremos "❌" no lugar do caractere</h3>
+    <div class="container">
+        <h1>Texto para Código Morse</h1>
+        <input type="text" id="textInput" placeholder="Digite o texto aqui">
+        <button onclick="convertToMorse()">Converter</button>
+        <div class="output-container" id="morseOutput" data-description="Texto convertido para Código Morse"></div>
+    </div>
+
+    <!-- Tradutor de Código Morse -->
+    <div class="translator-container">
+        <h1>Tradutor de Código Morse</h1>
+        <input type="text" id="morseInput" placeholder="Digite o código Morse aqui">
+        <button onclick="convertFromMorse()">Traduzir</button>
+        <div class="translator-output-container" id="textOutput" data-description="Código Morse inserido"></div>
+        <div class="translated-text-container" id="translatedTextOutput" data-description="Texto traduzido do Código Morse"></div>
+    </div>
+
+    <script>
+        // Definição do alfabeto Morse e inverso
+        const morseCode = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+            'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+            'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+            'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+            'Y': '-.--', 'Z': '--..',
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+            '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+            ' ': ' '
+        };
+
+        // Inverso do alfabeto Morse para tradução
+        const morseToText = Object.fromEntries(
+            Object.entries(morseCode).map(([char, code]) => [code, char])
+        );
+
+        function removeAccents(text) {
+            return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function convertToMorse() {
+            const inputText = document.getElementById('textInput').value.toUpperCase();
+            const cleanText = removeAccents(inputText); // Remove acentos
+            let morseOutput = '';
+
+            for (let char of cleanText) {
+                if (morseCode[char] !== undefined) {
+                    morseOutput += morseCode[char] + ' ';
+                } else {
+                    morseOutput += '❌'; // Para caracteres não suportados
+                }
+            }
+
+            document.getElementById('morseOutput').textContent = morseOutput.trim();
+
+            // Limpa o campo de entrada após a conversão
+            document.getElementById('textInput').value = '';
+        }
+
+        function convertFromMorse() {
+            const morseText = document.getElementById('morseInput').value.trim();
+            const morseArray = morseText.split(' '); // Divide o código Morse por espaços
+            let translatedText = '';
+
+            for (let code of morseArray) {
+                if (morseToText[code] !== undefined) {
+                    translatedText += morseToText[code];
+                } else {
+                    translatedText += '❌'; // Para códigos não suportados
+                }
+            }
+
+            document.getElementById('textOutput').textContent = morseText; // Mostra o código Morse original
+            document.getElementById('translatedTextOutput').textContent = translatedText; // Mostra o texto traduzido
+
+            // Limpa o campo de entrada após a tradução
+            document.getElementById('morseInput').value = '';
+        }
+    </script>
+</body>
+</html>
