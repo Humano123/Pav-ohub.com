@@ -6,116 +6,149 @@
     <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
     <title>Pavão hub</title>
     <style>
-    body{
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            height: 100vh;
+            background-color: #468aff;
             margin: 0;
             display: flex;
             flex-direction: column;
-    }
-    .asdasd{
-        color: #f0f0f0;
-        font-size: 300%;
-    }
-
-    .asd{
-        display: flex;
-    }
-    nav{
-            background-color: black;
+            align-items: center;
+            min-height: 100vh;
         }
-        .aviso{
+        .asdasd {
+            color: #f0f0f0;
+            font-size: 300%;
+        }
+        .asd {
+            display: flex;
+        }
+        nav {
+            background-color: black;
+            width: 100%;
+        }
+        .aviso {
             color: rgb(110, 27, 27);
         }
-        .butão{
+        .butão {
             color: black;
             background-color: rgb(119, 119, 119);
-            border: 1;
+            border: 1px solid transparent;
             text-decoration: none;
-            font-size: 200%;
+            font-size: 100%; /* Ajuste o tamanho da fonte para se adequar aos novos tamanhos dos botões */
             transition: transform 0.2s ease-in-out;
             border-radius: 2vh;
+            width: 150px; /* Largura fixa dos botões */
+            height: 150px; /* Altura fixa dos botões */
+            box-sizing: border-box;
+            margin: 10px; /* Margem entre os botões */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        .butão:hover{
+        .butão:hover {
             cursor: pointer;
             background-color: #cacaca;
             text-decoration: underline;
+            box-shadow: 2vh 2vh 2vh rgb(0, 0, 0);
         }
-        .butão:active{
+        .butão:active {
             cursor: progress;
-            transform: scale(0.5);
+            transform: scale(0.9); /* Reduzido o scale para evitar que o botão desapareça */
+            box-shadow: 2vh 2vh 2vh rgb(106, 106, 106);
         }
-        .perm{
+        .perm {
             color: #cacaca;
         }
-
-
-        .all{
+        .all {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .dc{
+        .dc {
             border-radius: 2vh;
         }
-</style>
+        .display-click {
+            font-size: 200%;
+            color: #f0f0f0;
+            text-align: center;
+            margin-bottom: 50px; /* Distância entre o texto e os botões */
+            padding: 10px; /* Espaço ao redor do texto */
+            width: 100%; /* Ocupa toda a largura disponível */
+            box-sizing: border-box; /* Inclui padding e border na largura total */
+        }
+        .Tudo {
+            display: flex;
+            flex-wrap: wrap; /* Permite que os botões fiquem lado a lado e vão para a linha de baixo quando necessário */
+            justify-content: center; /* Centraliza os botões */
+            align-items: center;
+            width: 100%;
+        }
+        .Parte {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 <nav>
     <div class="all">
-    <div class="asd">
-        <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
-        <h1 class="asdasd">Pavão hub</h1>
-    </div> 
-    <div class="asd2">
-    <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
-</div>
-</div>
+        <div class="asd">
+            <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+            <h1 class="asdasd">Pombo hub</h1>
+        </div>
+        <div class="asd2">
+            <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+        </div>
+    </div>
     <h3 class="perm">Permissão necessaria: Nenhuma</h3>
 </nav>
-    <section>
-        <div class="container">
-            <h1>Alô?</h1>
-            <p><b class="aviso">AVISO RAPIDO: este site não é malicioso, e não roubaremos suas informações, cada pagina nossa, tem um aviso dizendo quais permissões você deve usar para funcionar, neste caso agora nenhuma, mas por exemplo na etapa de <a href="armazenador.html">armazenamento</a> nele você deve permitir apenas o download automatico, que serve para você abaixar as imagens.</b></p>
-            <p><b>Curiosidade: se você quiser sair de uma aba, apenas aperte no logotipo do site</b></p>
-        </div>
-    </section>
+<section>
+    <div class="container">
+        <h1>Alô?</h1>
+        <p><b class="aviso">AVISO RAPIDO: este site não é malicioso, e não roubaremos suas informações, cada pagina nossa, tem um aviso dizendo quais permissões você deve usar para funcionar, neste caso agora nenhuma, mas por exemplo na etapa de <a href="armazenador.html">armazenamento</a> nele você deve permitir apenas o download automatico, que serve para você abaixar as imagens.</b></p>
+        <p><b>Curiosidade: Se você quiser ir para o menu, apenas clique no logotipo.</b></p>
+        <p><b>Dê dois cliques no botão para entrar</b></p>
+    </div>
+</section>
 <br>
-<div class="tudo">
-    <div class="partes">
-    <h1>Armazenamento secreto</h1>
-<p><b>Esse armazenamento você pode guardar cada imagem com uma senha, e pode colocar TUDO.</b></p>
-<a href="armazenador.html"><input class="butão" type="button" value="Entrar"></a>
+<div class="Tudo">
+    <div class="display-click" id="displayClick"></div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'armazenador.html', 'Esconda imagens aqui')">Armazenador secreto</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'anunciolivre.html', 'Tire os anuncios aqui')">Sem anuncio no youtube</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'codigos.html', 'Quer irritar alguem? irrite uai')">Id de item gigante</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'Fakes.html', 'Se amostre para sua namorada ou amigo aqui')">Itens IGC falsos no roblox</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'morse.html', 'Quer xingar seu amigo em outra lingua? xingue em codigo morse')">Tradutor de codigo morse</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'verdade.html', 'Não sou responsavel se der merda porque você usou isso para casas de apostas')">Criador de roleta</button>
+    </div>
 </div>
-<br>
-<div class="partes">
-    <h1>Codigos de acessorios gigantes na roblox</h1>
-    <p><b>Coloque codigos de acessorio da roblox ULTRAMENTE GIGANTES no avatar.</b></p>
-    <a href="codigos.html"><input class="butão" type="button" value="Entrar"></a>
-</div>
-<br>
-<div class="partes">
-    <h1>Tirar os anuncios do youtube</h1>
-    <p><b>Veja seu video sem anuncio no youtube sem precisar abaixar nada.</b></p>
-    <a href="anunciolivre.html"><input class="butão" type="button" value="Entrar"></a>
-</div>
-<br>
-<div class="partes">
-    <h1>Itens caros falsos da roblox</h1>
-    <p><b>Quer fingir ser rico para sua namorada? entre aqui para saber os links dos dominus, valk etc</b></p>
-    <a href="fakes.html"><input class="butão" type="button" value="Entrar"></a>
-</div>
-<br>
-<div class="partes">
-    <h1>Codigo morse</h1>
-    <p><b>Quer xingar seu amigo em outra linga? xinge em codigo morse, se quiser traduzir um codigo morse traduza por aqui mesmo.</b></p>
-    <a href="morse.html"><input class="butão" type="button" value="Entrar"></a>
-</div>
-<br>
-<div class="partes">
-    <h1>Sortear</h1>
-    <p><b>Quer fazer um sorteio na sua casa/cidade/bairro? faça por aqui, sorteie nomes!</b></p>
-    <a href="verdade.html"><input class="butão" type="button" value="Entrar"></a>
-</div>
-</div>
+
+<script>
+    let lastClickedButton = null;
+
+    function handleClick(event, url, name) {
+        event.preventDefault();
+        const displayClick = document.getElementById('displayClick');
+
+        if (lastClickedButton === event.target) {
+            window.location.href = url;
+        } else {
+            lastClickedButton = event.target;
+            displayClick.textContent = name;
+        }
+    }
+</script>
 </body>
 </html>
