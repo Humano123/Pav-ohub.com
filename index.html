@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #468aff;
+            background-color: #000000;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            color: #cacaca;
+        }
+        img{
+            user-select: none;
         }
         .asdasd {
             color: #f0f0f0;
@@ -23,22 +27,22 @@
             display: flex;
         }
         nav {
-            background-color: black;
+            background-color: rgb(109, 109, 109);
             width: 100%;
         }
         .aviso {
             color: rgb(110, 27, 27);
         }
         .butão {
-            color: black;
+            color: rgb(255, 255, 255);
             background-color: rgb(119, 119, 119);
             border: 1px solid transparent;
             text-decoration: none;
             font-size: 100%; /* Ajuste o tamanho da fonte para se adequar aos novos tamanhos dos botões */
             transition: transform 0.2s ease-in-out;
             border-radius: 2vh;
-            width: 150px; /* Largura fixa dos botões */
-            height: 150px; /* Altura fixa dos botões */
+            width: 15vh; /* Largura fixa dos botões */
+            height: 15vh; /* Altura fixa dos botões */
             box-sizing: border-box;
             margin: 10px; /* Margem entre os botões */
             display: flex;
@@ -97,8 +101,6 @@
         <div class="asd">
             <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
             <h1 class="asdasd">Pombo hub</h1>
-        </div>
-        <div class="asd2">
             <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
         </div>
     </div>
@@ -116,7 +118,7 @@
 <div class="Tudo">
     <div class="display-click" id="displayClick"></div>
     <div class="Parte">
-        <button class="butão" onclick="handleClick(event, 'armazenador.html', 'Esconda imagens aqui')">Armazenador secreto</button>
+        <button class="butão" onclick="handleClick(event, 'armazenador.html', 'Guarde imagens usando senhas')">Armazenador com senha</button>
     </div>
     <div class="Parte">
         <button class="butão" onclick="handleClick(event, 'anunciolivre.html', 'Tire os anuncios aqui')">Sem anuncio no youtube</button>
@@ -125,13 +127,16 @@
         <button class="butão" onclick="handleClick(event, 'codigos.html', 'Quer irritar alguem? irrite uai')">Id de item gigante</button>
     </div>
     <div class="Parte">
-        <button class="butão" onclick="handleClick(event, 'fakes.html', 'Se amostre para sua namorada ou amigo aqui')">Itens IGC falsos no roblox</button>
+        <button class="butão" onclick="handleClick(event, 'fakes.html', 'Se amostre para sua namorada ou amigo aqui')">Itens UGC falsos no roblox</button>
     </div>
     <div class="Parte">
         <button class="butão" onclick="handleClick(event, 'morse.html', 'Quer xingar seu amigo em outra lingua? xingue em codigo morse')">Tradutor de codigo morse</button>
     </div>
     <div class="Parte">
         <button class="butão" onclick="handleClick(event, 'verdade.html', 'Não sou responsavel se der merda porque você usou isso para casas de apostas')">Criador de roleta</button>
+    </div>
+    <div class="Parte">
+        <button class="butão" onclick="handleClick(event, 'jogos.html', 'Tá entediado? jogo alguns desses jogos no roblox!')">Jogos legais do roblox</button>
     </div>
 </div>
 
