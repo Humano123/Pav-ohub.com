@@ -93,11 +93,13 @@
             justify-content: center;
             align-items: center;
         }
-        #erro{
-            background-color: red;
-            background-image: url(erro.png);
-            background-repeat: no-repeat;
-            background-size: cover;
+        .a{
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .a:active{
+            color: red;
         }
     </style>
 </head>
@@ -105,9 +107,9 @@
 <nav>
     <div class="all">
         <div class="asd">
-            <a href="index.html"><img src="Logotipo.png" width="100" ondragstart="return false"></a>
+            <img src="Logotipo.png" width="100" ondragstart="return false">
             <h1 class="asdasd">Pombo hub</h1>
-            <a href="https://discord.gg/BFWWwaGjB8"><img class="dc" src="dc.png" width="50vh"></a>
+            <img class="dc" src="dc.png" width="50vh">
         </div>
     </div>
     <h3 class="perm">Permissão necessaria: Nenhuma</h3>
@@ -115,7 +117,7 @@
 <section>
     <div class="container">
         <h1>Alô?</h1>
-        <p><b class="aviso">AVISO RAPIDO: este site não é malicioso, e não roubaremos suas informações, cada pagina nossa, tem um aviso dizendo quais permissões você deve usar para funcionar, neste caso agora nenhuma, mas por exemplo na etapa de <a href="armazenador.html">armazenamento</a> nele você deve permitir apenas o download automatico, que serve para você abaixar as imagens.</b></p>
+        <p><b class="aviso">AVISO RAPIDO: este site não é malicioso, e não roubaremos suas informações, cada pagina nossa, tem um aviso dizendo quais permissões você deve usar para funcionar, neste caso agora nenhuma, mas por exemplo na etapa de <b class="a">armazenamento</b> nele você deve permitir apenas o download automatico, que serve para você abaixar as imagens.</b></p>
         <p><b>Curiosidade: Se você quiser ir para o menu, apenas clique no logotipo.</b></p>
         <p><b>Dê dois cliques no botão para entrar</b></p>
     </div>
@@ -127,7 +129,7 @@
         <button class="butão" onclick="handleClick(event, 'armazenador.html', 'Guarde imagens usando senhas')">Armazenador com senha</button>
     </div>
     <div class="Parte">
-        <button id="erro" class="butão" onclick="handleClick(event, 'anunciolivre.html', '-')"></button>
+        <button class="butão" onclick="handleClick(event, 'anunciolivre.html', 'Tire os anuncios aqui')">Sem anuncio no youtube</button>
     </div>
     <div class="Parte">
         <button class="butão" onclick="handleClick(event, 'codigos.html', 'Quer irritar alguem? irrite uai')">Id de item gigante</button>
@@ -151,21 +153,5 @@
         <button class="butão" onclick="handleClick(event, 'compraracc.html', 'Quer comprar uma conta no roblox ou quer ter robux mais barato? veja!')">Comprar contas/robux no roblox</button>
     </div>
 </div>
-
-<script>
-    let lastClickedButton = null;
-
-    function handleClick(event, url, name) {
-        event.preventDefault();
-        const displayClick = document.getElementById('displayClick');
-
-        if (lastClickedButton === event.target) {
-            window.location.href = url;
-        } else {
-            lastClickedButton = event.target;
-            displayClick.textContent = name;
-        }
-    }
-</script>
 </body>
 </html>
